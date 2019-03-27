@@ -25,7 +25,7 @@ public class Calculator extends JFrame
     Calculator()
     {
         width=375;
-        height=900;
+        height=600;
         initWindow();
         initButtons();
         this.setLayout(null);
