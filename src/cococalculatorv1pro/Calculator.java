@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package cococalculatorv1pro;
 
 import java.awt.Color;
@@ -15,7 +10,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 
 /**
- *
+ * Maneja una calculadora con numeros complejos
  * @author ivan_
  */
 
@@ -28,6 +23,10 @@ public class Calculator extends JFrame implements ActionListener
     private int width;
     private String error;
     
+    /**
+     * Inicializa variables y 
+     * la vista
+     */
     Calculator()
     {
         width=375;
@@ -36,10 +35,11 @@ public class Calculator extends JFrame implements ActionListener
         initButtons();
         this.setLayout(null);
         reset();
-        display.setText("(-6-3i)/(4+6i)");
-        text = display.getText();
     }
     
+    /**
+     * Inicializa la ventana
+     */
     private void initWindow()
     {
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -57,6 +57,9 @@ public class Calculator extends JFrame implements ActionListener
         this.add(display);
     }
     
+    /**
+     * Inicializa la matriz de botones
+     */
     private void initButtons()
     {
         String buttonText[][] = {
@@ -82,6 +85,10 @@ public class Calculator extends JFrame implements ActionListener
         }
     }
 
+    /**
+     * Listener de todos los eventos
+     * @param e  evento
+     */
     @Override
     public void actionPerformed(ActionEvent e) 
     {
@@ -103,6 +110,9 @@ public class Calculator extends JFrame implements ActionListener
         }
     }
     
+    /**
+     * Borra el ultimo caracter
+     */
     private void back()
     {
         if(text.length()>0)
@@ -112,6 +122,10 @@ public class Calculator extends JFrame implements ActionListener
         }
     }
     
+    /**
+     * Realiza la verificación y 
+     * operación del string
+     */
     private void makeOperation()
     {
         JOptionPane pop = new JOptionPane();
@@ -157,6 +171,11 @@ public class Calculator extends JFrame implements ActionListener
         }
     }
 
+    /**
+     * Convierte un string en un numero
+     * @param operation string
+     * @return Numero complejo
+     */
     Complex getNumber(String operation)
     {
         Double sign1 = 1.0;
@@ -181,6 +200,9 @@ public class Calculator extends JFrame implements ActionListener
         return new Complex(sign1*Integer.parseInt(splitted[0]),sign2*Integer.parseInt(splitted[1].substring(0,splitted[1].length()-1)));   
     }
     
+    /**
+     * Imprime el error
+     */
     private void error()
     {
         JOptionPane pop = new JOptionPane();
@@ -188,20 +210,22 @@ public class Calculator extends JFrame implements ActionListener
         display.setText("ERROR");
     }
     
+    /**
+     * Reinicia la pantalla
+     */
     private void reset()
     {
         text = "";
         display.setText(text);
     }
     
+    /**
+     * Listener por defecto 
+     * @param button que realizó la acción
+     */
     private void writeText(JButton button)
     {
         text += button.getText();
         display.setText(text); 
-    }
-    private void numeric(JButton e)
-    {
-        text += e.getText();
-        display.setText(text);
     }
 }
