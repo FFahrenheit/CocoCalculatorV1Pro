@@ -36,6 +36,8 @@ public class Calculator extends JFrame implements ActionListener
         initButtons();
         this.setLayout(null);
         reset();
+        display.setText("(-6-3i)/(4+6i)");
+        text = display.getText();
     }
     
     private void initWindow()
@@ -150,6 +152,7 @@ public class Calculator extends JFrame implements ActionListener
             case "*":
                 display.setText(num1.multiply(num1, num2).toString());
             case "/":
+                display.setText(num1.divide(num1, num2));
                 break;
         }
     }

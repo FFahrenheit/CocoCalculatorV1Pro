@@ -75,4 +75,18 @@ public class Complex
     {
         return new Complex(a.getReal()*b.getReal()-a.getImaginary()*b.getImaginary(),a.getReal()*b.getImaginary()+b.getReal()*a.getImaginary());
     }
+    
+    public String divide(Complex a, Complex b)
+    {
+        Complex conj = new Complex(b.getReal(), (b.getImaginary()*-1.0));
+        Complex aNew = a.multiply(a, conj);
+        Complex bNew = b.multiply(b, conj);
+        String out =  "("+aNew.getReal()+"/"+bNew.getReal();
+        if(aNew.getImaginary()>0)
+        {
+            out+="+";
+        }
+        out += aNew.getImaginary()+"i/"+bNew.getReal()+")";
+        return out;
+    }
 }
